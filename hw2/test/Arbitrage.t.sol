@@ -79,25 +79,44 @@ contract Arbitrage is Test {
         /**
          * Please add your solution below
          */
-        address[] memory path = new address[](4);
-        path[0] = address(tokenB);  // address of tokenB
-        path[1] = address(tokenE);  
-        path[2] = address(tokenA);  
-        path[3] = address(tokenD); 
-        path[4] = address(tokenC);  
-        path[5] = address(tokenE);  
-        path[6] = address(tokenD);
-        path[7] = address(tokenC); 
-        path[8] = address(tokenB);  
 
-        // Execute the swap from tokenB to tokenA to tokenD back to tokenB
-        router.swapExactTokensForTokens(
-            tokensBefore,  // amountIn: All of tokenB to swap
-            0,             // amountOutMin: Minimum amount of final tokenB to accept (can be set to 0 for simplicity in tests)
-            path,          // path of token swap
-            arbitrager,    // recipient of the final tokenB
-            block.timestamp + 300  // deadline: timestamp after which the transaction is no longer valid
-        );
+        // Swap tokenB to tokenE
+        address[] memory path = new address[](2);
+        path[0] = address(tokenB);
+        path[1] = address(tokenE);
+        router.swapExactTokensForTokens(5 ether, 0, path, arbitrager, block.timestamp + 300);
+        uint256 tokenEBalance = tokenE.balanceOf(arbitrager);
+        console.log("Token E received from the swap: %s", tokenEBalance);
+
+        // Swap tokenE to tokenA
+        path[0] = address(tokenE);
+        path[1] = address(tokenA);
+        tokenE.approve(address(router), tokenEBalance);
+        router.swapExactTokensForTokens(tokenEBalance, 0, path, arbitrager, block.timestamp + 300);
+        uint256 tokenABalance = tokenA.balanceOf(arbitrager);
+        console.log("Token A received from the swap: %s", tokenABalance);
+
+        // Swap tokenA to tokenD
+        path[0] = address(tokenA);
+        path[1] = address(tokenD);
+        tokenA.approve(address(router), tokenABalance);
+        router.swapExactTokensForTokens(tokenABalance, 0, path, arbitrager, block.timestamp + 300);
+        uint256 tokenDBalance = tokenD.balanceOf(arbitrager);
+        console.log("Token D received from the swap: %s", tokenDBalance);
+
+        // Swap tokenD to tokenC
+        path[0] = address(tokenD);
+        path[1] = address(tokenC);
+        tokenD.approve(address(router), tokenDBalance);
+        router.swapExactTokensForTokens(tokenDBalance, 0, path, arbitrager, block.timestamp + 300);
+        uint256 tokenCBalance = tokenC.balanceOf(arbitrager);
+        console.log("Token C received from the swap: %s", tokenCBalance);
+
+        // Swap tokenC to tokenB
+        path[0] = address(tokenC);
+        path[1] = address(tokenB);
+        tokenC.approve(address(router), tokenCBalance);
+        router.swapExactTokensForTokens(tokenCBalance, 0, path, arbitrager, block.timestamp + 300);
         /**
          * Please add your solution above
          */
