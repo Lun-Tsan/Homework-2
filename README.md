@@ -31,7 +31,7 @@ Investigate the minting function in the UniswapV2Pair contract. When depositing 
 為了要維持穩定，避免有人想要隨意操控價格，所以用x*y=K，來讓滑點產生的難度增加。也藉由價格的穩定來保障liquidity provider的權益不會受損，能公平的交易。
 
 ## Problem 5
-What is a sandwich attack, and how might it impact you when initiating a swap?
+What is a sandwich attack, and how might it impact you when initiating a swap?  
 如果有人要換幣，但是有另一個人想要攻擊從中獲利，舉例來說:有人想買A幣，且攻擊者得知訊息後抬高了A幣的價錢，讓那個人多花錢之後，再賣出去賺價差。  
 這會讓swap時候的滑點增大，增加金錢上的損失。
 
