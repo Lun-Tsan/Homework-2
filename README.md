@@ -4,7 +4,6 @@ Please complete the report problem below:
 
 ## Problem 1
 Provide your profitable path, the amountIn, amountOut value for each swap, and your final reward (your tokenB balance).   
-> Solution   
 Swapped tokenB to tokenE: 0.5 tokenE received   
 Swapped tokenE to tokenA: 1.90909090909091 tokenA received   
 Swapped tokenA to tokenD: 1.016129032258065 tokenD received   
