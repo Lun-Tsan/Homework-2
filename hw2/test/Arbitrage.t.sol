@@ -117,7 +117,7 @@ contract Arbitrage is Test {
         path[1] = address(tokenE);
         tokenC.approve(address(router), tokenCBalance);
         router.swapExactTokensForTokens(tokenCBalance, 0, path, arbitrager, block.timestamp + 300);
-        uint256 tokenEBalance = tokenE.balanceOf(arbitrager);
+        tokenEBalance = tokenE.balanceOf(arbitrager);
         console.log("Token E received from the swap: %s", tokenEBalance);
 
         // Swap tokenD to tokenC
@@ -125,7 +125,7 @@ contract Arbitrage is Test {
         path[1] = address(tokenD);
         tokenE.approve(address(router), tokenEBalance);
         router.swapExactTokensForTokens(tokenEBalance, 0, path, arbitrager, block.timestamp + 300);
-        uint256 tokenDBalance = tokenD.balanceOf(arbitrager);
+        tokenDBalance = tokenD.balanceOf(arbitrager);
         console.log("Token D received from the swap: %s", tokenDBalance);
 
         // Swap tokenD to tokenC
@@ -133,7 +133,7 @@ contract Arbitrage is Test {
         path[1] = address(tokenC);
         tokenD.approve(address(router), tokenDBalance);
         router.swapExactTokensForTokens(tokenDBalance, 0, path, arbitrager, block.timestamp + 300);
-        uint256 tokenCBalance = tokenC.balanceOf(arbitrager);
+        tokenCBalance = tokenC.balanceOf(arbitrager);
         console.log("Token C received from the swap: %s", tokenCBalance);
 
         // Swap tokenC to tokenB
