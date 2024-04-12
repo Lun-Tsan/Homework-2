@@ -49,9 +49,9 @@ def find_target_sequence(liquidity, initial_amount, current_token, target_amount
         return results[0]
     return None, []
 
-max_search_depth = 11
+max_search_depth = 7
 initial_token = 'tokenB'
-result_amount, result_sequence = find_target_sequence(liquidity, 5, initial_token, 20, initial_token, [], 0, max_search_depth)
+result_amount, result_sequence = find_target_sequence(liquidity, 5, initial_token, 21, initial_token, [], 0, max_search_depth)
 print("path:  tokenB",end='')
 for i in result_sequence:
     print('->'+i[1],end='')

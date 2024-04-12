@@ -79,15 +79,15 @@ contract Arbitrage is Test {
         /**
          * Please add your solution below
          */
-        address[] memory path = new address[](8);
-        path[0] = address(tokenB);  
+        address[] memory path = new address[](4);
+        path[0] = address(tokenB);  // address of tokenB
         path[1] = address(tokenE);  
         path[2] = address(tokenA);  
-        path[3] = address(tokenD);         
+        path[3] = address(tokenD); 
         path[4] = address(tokenC);  
         path[5] = address(tokenE);  
         path[6] = address(tokenD);
-        path[7] = address(tokenC);
+        path[7] = address(tokenC); 
         path[8] = address(tokenB);  
 
         // Execute the swap from tokenB to tokenA to tokenD back to tokenB
