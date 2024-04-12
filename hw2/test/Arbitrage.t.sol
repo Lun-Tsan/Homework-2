@@ -79,6 +79,25 @@ contract Arbitrage is Test {
         /**
          * Please add your solution below
          */
+        address[] memory path = new address[](13);
+        path[0] = address(tokenB);
+        path[1] = address(tokenD);
+        path[2] = address(tokenA);
+        path[3] = address(tokenE);
+        path[4] = address(tokenC);
+        path[5] = address(tokenA);
+        path[6] = address(tokenD);
+        path[7] = address(tokenC);
+        path[8] = address(tokenE);
+        path[9] = address(tokenA);
+        path[10] = address(tokenD);
+        path[11] = address(tokenC);
+        path[12] = address(tokenB); 
+
+        uint256 amountIn = 5 ether;
+        uint256 amountOutMin = 0;
+        uint256 deadline = block.timestamp + 300;
+        router.swapExactTokensForTokens(amountIn, amountOutMin, path, address(this), deadline);
         /**
          * Please add your solution above
          */
